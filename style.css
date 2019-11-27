@@ -162,6 +162,10 @@ label{
     border-radius: 30px;
 }
 
+#results {
+    display: grid;
+    justify-items: center;
+}
 
 button:focus {outline:0;}
 

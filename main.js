@@ -15,7 +15,6 @@ $("button").on("click", function () {
 
 const renderApts = function (apartments) {
     $("#results").empty()
-    // console.log(apartments) //array of apartments to render
     HandlebarsIntl.registerWith(Handlebars)
     const source = $('.apt-template').html()
     const template = Handlebars.compile(source)
