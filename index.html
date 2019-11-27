@@ -14,33 +14,79 @@
 
     <div id="search">
         <input type="text" placeholder="Address" id="addr-input">
-        <input type="number" class="min price" placeholder="Min. Price" id="min-p-input">
-        <input type="number" class="max price" placeholder="Max Price" id="max-p-input">
-        <input type="number" class="min room" placeholder="Min. Rooms" id="min-r-input">
-        <input type="number" class="max room" placeholder="Max Rooms" id="max-r-input">
-
-        <div class="check-group">
-            <input class="form-radio" type="checkbox" name="immediate" id="immed-y">
-            <label for="immediate">Immediate</label>
-        </div>
-        <div class="check-group">
-            <input class="form-radio" type="checkbox" name="parking" id="park-y">
-            <label for="parking">Parking</label>
-        </div>
-
+        <input type="number" class="min-price" placeholder="Min. Price" id="min-p-input">
+        <input type="number" class="max-price" placeholder="Max Price" id="max-p-input">
+        <input type="number" class="min-room" placeholder="Min. Rooms" id="min-r-input">
+        <input type="number" class="max-room" placeholder="Max Rooms" id="max-r-input">
         <button>Find Apartments</button>
+        <div class='radio-buttons'>
+            <!-- <div class="check-group"> -->
+                <input class="form-radio" type="checkbox" name="immediate" id="immed-y">
+                <label for="immediate">Immediate</label>
+            <!-- </div> -->
+            <!-- <div class="check-group"> -->
+                <input class="form-radio" type="checkbox" name="parking" id="park-y">
+                <label for="parking">Parking</label>
+            <!-- </div> -->
+        </div>
+
     </div>
 
     <hr>
 
     <div id="results"></div>
 
-    <!-- Your Code Here -->
-    <!-- You should start doing handlebar stuff here -->
-    <!-- Your Code Here -->
-
+    <script class='apt-template' type="text/x-handlebars-template">
+                {{#each apartments}}
+                    <div class='result'>
+                        <!-- <div class='heart'><i class="fas fa-heart"></i></div> -->
+                        <img src='{{img}}'>
+                        <label class='l-addr'>Address:</label>
+                        <div class='address'>
+                            {{address}}
+                        </div>
+                        <label class='l-price'>Price:</label>
+                        <div class='price'>
+                                {{formatNumber price style="currency" currency="USD"}}
+                        </div>
+                        <label class='l-rooms'>#Rooms:</label>
+                        <div class='rooms'>
+                            {{rooms}}
+                        </div>
+                        <label class='l-park'>Parking:</label>
+                        <div class='parking'>
+                            {{#if parking}}
+                                <i class="fas fa-parking"></i>
+                            {{/if}}
+                            {{#unless parking}}
+                                <img class=no-parking src='75115.png'>
+                            {{/unless}}
+                        </div>
+                        {{#if immediate}}
+                        <label class='l-contact-details'>Contact Details:</label>
+                        <div class='contact-details'>
+                                {{contactDetails.name}}: {{contactDetails.email}}
+                            </div>
+                            {{/if}}
+                        <div class='feature'>
+                                <ul>
+                                    {{#each feature}}
+                                    <br><li>{{ this }}</li>
+                                    {{/each}}
+                                </ul>
+                        </div>
+                        </div>
+                        {{/each}}
+                        {{#unless apartments}}
+                            <div class='no-match'>
+                                <img class='no-result-pic' src='no-results.png'>
+                                <!-- Sorry, no available apartments!<i id='smiley' class="far fa-frown"></i> -->
+                        </div>
+                        {{/unless}}
+        </script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+    <script src="./node_modules/handlebars-intl/dist/handlebars-intl.js"></script>
     <script src="apt-data.js"></script>
     <script src="apt-filter.js"></script>
     <script src="main.js"></script>

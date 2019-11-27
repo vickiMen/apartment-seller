@@ -1,0 +1,19 @@
+{
+  "name": "apartment-seller",
+  "version": "1.0.0",
+  "description": "Handlebars Project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vickiMen/apartment-seller.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vickiMen/apartment-seller/issues"
+  },
+  "homepage": "https://github.com/vickiMen/apartment-seller#readme"
+}
